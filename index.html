@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masomo University</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" alt="Masomo university logo" class="university-logo">
+      <h1>Masomo University</h1>
+      <p>Excellence in Education & Innovation</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+
+        <li class="dropdown">
+          <a href="#">Academics</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">IT</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Education</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="slideshow">
+        <img id="slide" src="images/slide1.png" alt="University Image" />
+      </section>
+
+      <section class="hero">
+        <h2>Welcome to Masomo University</h2>
+        <p>Shaping future leaders through quality education.</p>
+        <button onclick="toggleInfo()">Learn More</button>
+
+        <div id="moreInfo">
+          <p>
+            We offer globally competitive programs, modern facilities, and a
+            supportive learning environment.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Our Programs</h2>
+        <ul>
+          <li>BSc Information Technology</li>
+          <li>Bachelor of Business Management</li>
+          <li>Bachelor of Education</li>
+          <li>Diploma in Computer Science</li>
+        </ul>
+      </section>
+
+      <section id="admissions">
+        <h2>Admissions</h2>
+
+        <form id="admissionForm">
+          <label>Full Name</label>
+          <input type="text" id="name" />
+
+          <label>Email</label>
+          <input type="email" id="email" />
+
+          <button type="submit">Apply Now</button>
+        </form>
+
+        <p id="formMessage"></p>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@Masomo.ac.ke</p>
+      <p>Phone: +254 700 000 000</p>
+      <p>&copy; 2025 Masomo University</p>
+    </footer>
+
+    <script>
+      const images = [
+        "images/slide1.png",
+        "images/slide2.png",
+        "images/slide3.png",
+      ];
+
+      let index = 0;
+      const slide = document.getElementById("slide");
+
+      setInterval(() => {
+        index = (index + 1) % images.length;
+        slide.src = images[index];
+      }, 2000);
+
+      function toggleInfo() {
+        const info = document.getElementById("moreInfo");
+        info.style.display = info.style.display === "block" ? "none" : "block";
+      }
+
+      document
+        .getElementById("admissionForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("formMessage");
+
+          if (name === "" || email === "") {
+            message.style.color = "red";
+            message.textContent = "All fields are required!";
+          } else {
+            message.style.color = "green";
+            message.textContent = "Application submitted successfully!";
+          }
+        });
+    </script>
+  </body>
+</html>
